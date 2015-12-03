@@ -11,10 +11,12 @@
     (map value parens)))
 
 (defn basement [parens]
-  (+ 1 (count
-    (take-while #(>= % 0)
-      (reductions +
-        (map value parens))))))
+  (->> parens
+       (map value)
+       (reductions +)
+       (take-while #(>= % 0))
+       (count)
+       (inc)))
 
 (defn main []
   (let [data (slurp "./inputs/day01.txt")]
