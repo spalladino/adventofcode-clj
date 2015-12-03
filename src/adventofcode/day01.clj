@@ -14,7 +14,7 @@
   (->> parens
        (map value)
        (reductions +)
-       (take-while #(>= % 0))
+       (take-while (comp not neg?))
        (count)
        (inc)))
 
