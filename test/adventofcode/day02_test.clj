@@ -7,3 +7,9 @@
     (is (=
       (+ 58 43)
       (day02/total-paper [[2,3,4], [1,1,10]])))))
+
+(deftest test-ribbon
+  (testing "ribbon for two presents"
+    (is (=
+      (+ 34 14)
+      (day02/total-ribbon [[2,3,4], [1,1,10]])))))

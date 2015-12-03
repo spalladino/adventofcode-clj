@@ -18,5 +18,5 @@
 
 (defn main []
   (let [data (slurp "./inputs/day01.txt")]
-    (println "Santa is in floor: " (floor data))
-    (println "Basement reached on index: " (basement data))))
+    (println "Santa is in floor:   " (floor data))
+    (println "Basement reached on: " (basement data))))

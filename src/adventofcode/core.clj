@@ -3,5 +3,7 @@
   (:require [adventofcode.day02 :as day02]))
 
 (defn -main []
+  (println "Day 01")
   (day01/main)
+  (println "Day 02")
   (day02/main))
