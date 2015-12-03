@@ -3,4 +3,5 @@
   (:require [adventofcode.day02 :as day02]))
 
 (defn -main []
+  (day01/main)
   (day02/main))
