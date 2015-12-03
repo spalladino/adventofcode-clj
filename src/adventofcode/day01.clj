@@ -14,7 +14,7 @@
   (->> parens
        (map value)
        (reductions +)
-       (take-while (comp not neg?))
+       (take-while (complement neg?))
        (count)
        (inc)))
 
