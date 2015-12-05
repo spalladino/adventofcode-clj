@@ -6,7 +6,7 @@ Clojure solutions for [Advent of Code](http://adventofcode.com/).
 
 ## Usage
 
-Run with `lein run`, or test with `lein test`.
+Run with `lein run DAY`, or test with `lein test`.
 
 ## License
 
