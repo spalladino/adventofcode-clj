@@ -2,26 +2,38 @@
   (:require [clojure.string :as str])
   (:require [clojure.math.combinatorics :as combo]))
 
+(defn apply-brightness [action lights pos]
+  (case action
+    :turn-off (update lights pos #(max 0 ((fnil dec 0) %)))
+    :turn-on (update lights pos (fnil inc 0))
+    :toggle (update lights pos (fnil (comp inc inc) 0))))
+
 (defn apply-light [action lights pos]
   (case action
     :turn-on (assoc lights pos true)
     :turn-off (assoc lights pos false)
     :toggle (update lights pos not)))
 
-(defn apply-instruction [lights instruction]
+(defn apply-instruction [apply-func lights instruction]
   (let [[action from-i from-j to-i to-j] instruction]
     (reduce
-      (partial apply-light action) lights
+      (partial apply-func action) lights
       (combo/cartesian-product
         (range from-i (inc to-i))
         (range from-j (inc to-j))))))
 
 (defn lights-on [instructions]
   (->> instructions
-    (reduce apply-instruction {})
+    (reduce (partial apply-instruction apply-light) {})
     (vals)
     (filter identity)
     (count)))
+
+(defn lights-brightness [instructions]
+  (->> instructions
+    (reduce (partial apply-instruction apply-brightness) {})
+    (vals)
+    (apply +)))
 
 (defn parse [data]
   (->> data
@@ -38,4 +50,5 @@
 
 (defn main []
   (let [data (slurp "./inputs/day06.txt")]
-    (println "Number of lights on: " (lights-on (parse data)))))
+    (println "Number of lights on:  " (lights-on (parse data)))
+    (println "Brightness of lights: " (lights-brightness (parse data)))))
