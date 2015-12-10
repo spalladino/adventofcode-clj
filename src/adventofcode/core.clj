@@ -5,16 +5,18 @@
   (:require [adventofcode.day04 :as day04])
   (:require [adventofcode.day05 :as day05])
   (:require [adventofcode.day06 :as day06])
-  (:require [adventofcode.day07 :as day07]))
+  (:require [adventofcode.day07 :as day07])
+  (:require [adventofcode.day10 :as day10]))
 
 (def days
-  {1 day01/main
-   2 day02/main
-   3 day03/main
-   4 day04/main
-   5 day05/main
-   6 day06/main
-   7 day07/main})
+  {1  day01/main
+   2  day02/main
+   3  day03/main
+   4  day04/main
+   5  day05/main
+   6  day06/main
+   7  day07/main
+   10 day10/main})
 
 (defn -main [arg]
   (let [day (Integer/parseInt arg)]
