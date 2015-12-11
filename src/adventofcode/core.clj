@@ -6,6 +6,7 @@
   (:require [adventofcode.day05 :as day05])
   (:require [adventofcode.day06 :as day06])
   (:require [adventofcode.day07 :as day07])
+  (:require [adventofcode.day09 :as day09])
   (:require [adventofcode.day10 :as day10]))
 
 (def days
@@ -16,6 +17,7 @@
    5  day05/main
    6  day06/main
    7  day07/main
+   9  day09/main
    10 day10/main})
 
 (defn -main [arg]
