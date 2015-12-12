@@ -10,4 +10,5 @@
 \"aaa\\\"aaa\"
 \"\\x27\"
 "]
-    (is (= 12 (day08/chars-diff example))))))
+    (is (= 12 (day08/chars-diff day08/diff-mem example)))
+    (is (= 19 (day08/chars-diff day08/diff-enc example))))))
