@@ -8,7 +8,8 @@
   (:require [adventofcode.day07 :as day07])
   (:require [adventofcode.day08 :as day08])
   (:require [adventofcode.day09 :as day09])
-  (:require [adventofcode.day10 :as day10]))
+  (:require [adventofcode.day10 :as day10])
+  (:require [adventofcode.day11 :as day11]))
 
 (def days
   {1  day01/main
@@ -20,7 +21,8 @@
    7  day07/main
    8  day08/main
    9  day09/main
-   10 day10/main})
+   10 day10/main
+   11 day11/main})
 
 (defn -main [arg]
   (let [day (Integer/parseInt arg)]
