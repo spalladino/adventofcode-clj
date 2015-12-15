@@ -7,21 +7,34 @@
 
 (defn travelled-per-second [{speed :speed run-time :run-time rest-time :rest-time}]
   (reductions +
-    (cons 0
-      (cycle
-        (concat
-          (repeat run-time speed)
-          (repeat rest-time 0))))))
+    (cycle
+      (concat
+        (repeat run-time speed)
+        (repeat rest-time 0)))))
 
-(defn distance-winner [data goal]
+(defn distances-travelled [data]
   (->> data
     (str/split-lines)
     (remove str/blank?)
     (map parse-line)
-    (map travelled-per-second)
-    (map #(nth % goal))
+    (map travelled-per-second)))
+
+(defn score-winner [data goal]
+  (let [distances-per-second (distances-travelled data)
+        max-per-second (apply map max distances-per-second)
+        is-winner-per-second (map (partial map = max-per-second) distances-per-second)
+        scores-per-second (map (fn [scores] (map #(if % 1 0) scores)) is-winner-per-second)
+        accums-per-second (map (partial reductions +) scores-per-second)]
+    (apply max
+      (map #(nth % goal) accums-per-second))))
+
+(defn distance-winner [data goal]
+  (->> data
+    (distances-travelled)
+    (map #(nth % (dec goal)))
     (apply max)))
 
 (defn main []
   (let [data (slurp "./inputs/day14.txt")]
-    (println "Distance by winner: " (distance-winner data 2503))))
+    (println "Winner distance: " (distance-winner data 2503))
+    (println "Winner score:    " (score-winner data 2503))))
