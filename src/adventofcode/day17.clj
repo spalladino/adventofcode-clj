@@ -27,14 +27,6 @@
     (count
       (filter #(= min-count %) counts))))
 
-; (defn container-min-combinations [target containers]
-;   (let [extend-solutions (fn [partials container] (mapcat #(extend-solution %1 container) partials))]
-;     (->> containers
-;       (reduce extend-solutions [target])
-;       (filter zero?)
-;       (count))))
-
-
 (defn main []
   (let [containers (parse-data (slurp "./inputs/day17.txt"))]
     (println "Container combinations: " (count-container-combinations 150 containers))
