@@ -1,6 +1,6 @@
 (ns adventofcode.core)
 
-(def DAYS (conj (range 20) 24))
+(def DAYS (conj (range 21) 24))
 
 (doall
   (map (fn [day] (eval `(require '[~(symbol (format "adventofcode.day%02d" (inc day))) :as ~(symbol (format "day%02d" (inc day)))])))
