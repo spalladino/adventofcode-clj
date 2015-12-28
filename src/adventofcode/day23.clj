@@ -35,7 +35,7 @@
         reg (if reg-str (keyword reg-str))
         offset (if offset-str (Integer/parseInt offset-str))
         args (remove nil? [reg offset])]
-    `(~(symbol (str "adventofcode.day23/instr-" cmd)) ~@args)))
+    `(~(ns-resolve 'adventofcode.day23 (symbol (str "instr-" cmd))) ~@args)))
 
 (defn parse-data [data]
   (->> data
