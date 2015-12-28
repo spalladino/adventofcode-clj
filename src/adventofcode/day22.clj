@@ -1,8 +1,6 @@
 (ns adventofcode.day22
   (:require [clojure.string :as str]))
 
-(defn p [x] (prn x) x)
-
 (def RECHARGE-MANA 101)
 (def SHIELD-BONUS 7)
 (def POISON-DAMAGE 3)
@@ -10,8 +8,8 @@
 (def MISSILE-DAMAGE 4)
 
 (def RECHARGE-DURATION 5)
-(def SHIELD-DURATION 5)
-(def POISON-DURATION 5)
+(def SHIELD-DURATION 6)
+(def POISON-DURATION 6)
 
 (def MAX-ROUNDS 12)
 
