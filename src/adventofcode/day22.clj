@@ -37,6 +37,8 @@
     :mana-spent 0
     :spells-cast [] })
 
+(def ^:dynamic *difficulty* :normal)
+
 (defn round-winner? [player boss]
   (if (not (pos? (:hp player))) :boss
     (if (not (pos? (:hp boss))) :player
@@ -87,8 +89,17 @@
                       match)]
       [effects new-player boss new-match])))
 
+(defn round-lose-1hp [[effects player boss match, :as state]]
+  (if (or (not (= *difficulty* :hard)) (:winner match)) state
+    (let [new-player (update player :hp dec)
+          new-match (if-let [winner (round-winner? new-player boss)]
+                      (assoc match :winner winner)
+                      match)]
+      [effects new-player boss new-match])))
+
 (defn round [[effects player boss match :as state] action]
   (-> state
+    (round-lose-1hp)
     (round-effects)
     (round-player action)
     (round-effects)
@@ -125,4 +136,5 @@
 (defn main []
   (let [player {:hp 50, :mana 500, :armor 0, :name :player}
         boss {:hp 55, :damage 8, :armor 0, :name :boss}]
-    (println "Least mana for winning: " (winner-min-mana player boss))))
+    (println "Normal difficulty: " (winner-min-mana player boss))
+    (println "Hard difficulty: " (binding [*difficulty* :hard] (winner-min-mana player boss)))))
