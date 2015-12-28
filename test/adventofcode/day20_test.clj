@@ -16,5 +16,5 @@
 
 (deftest test-first-house-presents
   (testing "first house to receive presents"
-    (is (= 4 (day20/first-house house-presents 65)))
-    (is (= 8 (day20/first-house house-presents 130)))))
+    (is (= 4 (day20/first-house day20/house-presents 65)))
+    (is (= 8 (day20/first-house day20/house-presents 130)))))

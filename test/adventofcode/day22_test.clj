@@ -14,12 +14,12 @@
 
       (is (= {:hp 2, :armor 0, :mana 77} player-1))
       (is (= 10 (:hp boss-1)))
-      (is (= 4 (:poison effects-1)))
+      (is (= 5 (:poison effects-1)))
       (is (= nil (:winner match-1)))
 
       (is (= {:hp 2, :armor 0, :mana 24} player-2))
       (is (= 0 (:hp boss-2)))
-      (is (= 2 (:poison effects-2)))
+      (is (= 3 (:poison effects-2)))
       (is (= :player (:winner match-2)))
       (is (= (+ 173 53) (:mana-spent match-2))))))
 
