@@ -16,6 +16,9 @@
     (filter #(= (fun %) min-val) values)))
 
 (defn can-split? [packages target]
+  true)
+
+(defn can-split-hard? [packages target]
   (some
     #(= target (apply + (first %)))
     (combo/partitions packages :min (dec *group-count*) :max (dec *group-count*))))
